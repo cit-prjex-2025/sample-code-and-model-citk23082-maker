@@ -52,7 +52,7 @@ void driver_stop(void) {
 
 void tracer_run(void) {
   if( linemon_is_online() ) {
-    driver_turn_left();
+    void driver_turn_left(void)ft();
   } else {
     driver_turn_right();
   }
@@ -148,4 +148,5 @@ void main_task(intptr_t unused) {
 
   porter_transport();
   ext_tsk();
+  ();
 }
