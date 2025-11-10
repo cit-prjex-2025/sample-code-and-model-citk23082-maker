@@ -1,16 +1,16 @@
 mkfile_path := $(dir $(lastword $(MAKEFILE_LIST)))
 
-APPL_COBJS += 
-
-APPL_CXXOBJS +=
-
 SRCLANG := c
 
-APPL_DIR += $(mkfile_path)app
-
-ifdef CONFIG_EV3RT_APPLICATION
-
-# Include libraries
-include $(EV3RT_SDK_LIB_DIR)/libcpp-ev3/Makefile
-
+APPL_ASMOBJS :=
+ifdef USE_CXX
+	APPL_CXXOBJS +=
+	APPL_COBJS += util.o horn.o
+else
+	APPL_COBJS += util.o horn.o
 endif
+
+APPL_DIRS += $(mkfile_path)app $(mkfile_path)/../util
+INCLUDES += \
+	-I$(mkfile_path)app \
+	-I$(mkfile_path)/../util

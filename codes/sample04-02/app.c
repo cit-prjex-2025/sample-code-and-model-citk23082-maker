@@ -84,7 +84,7 @@ void porter_transport(void) {
       
       // タイマーが時間切れになったら確認音を鳴らし、タイマーを再スタート
       if(timer_is_timedout(&load_timer)) {
-        horn_play_notify();
+        horn_confirmation();
         timer_start(&load_timer, 10000);
       }
 
@@ -107,7 +107,7 @@ void porter_transport(void) {
 
     case P_WAIT_FOR_UNLOADING:
       if(p_entry) {
-        horn_play_arrival();  // 到着音を鳴らす
+        horn_arrived();  // 到着音を鳴らす
         p_entry = false;
       }
       tracer_stop();
@@ -130,7 +130,7 @@ void porter_transport(void) {
 
     case P_ARRIVED:
       if(p_entry) {
-        horn_play_arrival();  // 到着音を鳴らす
+        horn_arrived();  // 到着音を鳴らす
         tracer_stop();
         p_entry = false;
       }
@@ -149,7 +149,7 @@ void main_task(intptr_t unused) {
   ev3_sensor_config(linemon_sensor, COLOR_SENSOR);
   ev3_sensor_config(walldetector_sensor, ULTRASONIC_SENSOR);
   
-  horn_init();
+  /* horn に初期化関数は不要（util/horn.c に初期化処理はありません） */
   timer_initialize(&load_timer);  // タイマーの初期化
 
   while(!ev3_button_is_pressed(BACK_BUTTON)) {

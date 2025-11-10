@@ -2,33 +2,18 @@
 extern "C" {
 #endif
 
-/**
- * Common header files
- */
 #include "ev3api.h"
-#include "target_test.h"
 
-/**
- * Task priorities (smaller number has higher priority)
- */
-#define MAIN_PRIORITY	5
+#define MAIN_PRIORITY    TMIN_APP_TPRI + 1
 
-/**
- * Task periods in ms
- */
-#define MAIN_PERIOD	2
+#ifndef STACK_SIZE
+#define STACK_SIZE      4096
+#endif /* STACK_SIZE */
 
-/**
- * Default task stack size in bytes
- */
-#define STACK_SIZE	4096
-
-/**
- * Prototypes for configuration
- */
 #ifndef TOPPERS_MACRO_ONLY
 
-extern void	main_task(intptr_t);
+extern void main_task(intptr_t exinf);
+extern void cyc0(intptr_t exinf);
 
 #endif /* TOPPERS_MACRO_ONLY */
 
