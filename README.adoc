@@ -190,7 +190,22 @@ image::sample01_class_01.png[{full-width}]
 [source,shell]
 ----
 git status
-// ここに上記コマンドの実行結果（画像ではなくテキスト）を貼り付ける
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   images/sample01_class_01.png
+        modified:   images/sample01_class_01.png.bak
+        modified:   models/sample04-02.asta
+        deleted:    models/sample04-02.asta.lock
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        models/sample01.asta.lock
+
+no changes added to commit (use "git add" and/or "git commit -a")
 ----
 
 問題がなければプッシュしなさい。問題があれば、TAに相談しなさい。
@@ -198,7 +213,17 @@ git status
 [source,shell]
 ----
 git push
-// ここに上記コマンドの実行結果（画像ではなくテキスト）を貼り付ける
+Username for 'https://github.com': citk23082
+Password for 'https://citk23082@github.com':
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 45.90 KiB | 540.00 KiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/cit-prjex-2025/sample-code-and-model-citk23082-maker.git
+   6fde092..c69bf9f  main -> main
 ----
 
 また、 `git log` を実行して過去の処理について確認しなさい。
